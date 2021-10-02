@@ -9,6 +9,7 @@ html, body {
 body {
   --COLOR_BACKGROUND: #01012B;
   --COLOR_TEXT: #414162;
+  --COLOR_MEDIUM: #121232;
   background: var(--COLOR_BACKGROUND);
 }
 ul {
@@ -16,8 +17,8 @@ ul {
   margin: 0;
   padding: 0;
 }
-#search-bar { 
-  width: 40%;
+#search-bar {
+  width: 10 0%;
   height: 60px;
   background: none;
   border: none;
@@ -60,6 +61,17 @@ ul {
   border-bottom: 3px solid var(--COLOR_TEXT);
 
 }
+#overall-esg-score {
+  float: right;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+#overall-esg-score span {
+  margin-left: 20px;
+  margin-right: 10px;
+  color: orange;
+  font-weight: bold;
+}
 #header button {
   width: 100%;
   height: 100%;
@@ -89,8 +101,8 @@ ul {
 #body {
   width: 100%;
   height: 100%;
-  display: table;
-  grid-template-columns: 33% 33% 33%;
+  display: grid;
+  grid-template-columns: 33% 52% 15%;
 }
 
 .eof {
@@ -117,6 +129,23 @@ ul {
 
 }
 .stock-block-stock-container {
+  margin-top: 10px;
   border-top: 3px solid var(--COLOR_TEXT);
-  /* border-bottom: 3px solid var(--COLOR_TEXT); */
+  border-bottom: 3px solid var(--COLOR_TEXT);
+  background-color: var(--COLOR_MEDIUM);
+}
+
+
+.stock-name {
+  text-transform: capitalize;
+  font-size: 20px;
+  color: white;
+}
+.stock-ticker {
+  text-transform: uppercase;
+  font-size: 15px;
+  color: var(--COLOR_TEXT);
+}
+.stock-purchase-time {
+  color: #9D9DB7;
 }

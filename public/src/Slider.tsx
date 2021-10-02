@@ -12,9 +12,9 @@ export default class Slider extends React.Component<Props, State> {
     this.state = { position: props.initialPosition }
   }
   render() {
-    return <>
+    return <div>
     {this.props.title}
-      ------
-    </>
+    
+    </div>
   }
 }

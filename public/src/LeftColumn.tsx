@@ -8,10 +8,10 @@ import StockBlock from './StockBlock';
 export default class LeftColumn extends React.Component {
   render() {
     return (
-      <>
+      <div>
         <SearchBar />
         <LeftColumnDisplayTypeSelection />
-        <OverallESGScore score={4} />
+        <OverallESGScore score={46} />
         <StockBlock
           dateInvested={new Date()}
           stocksInvestedIn={[
@@ -19,7 +19,7 @@ export default class LeftColumn extends React.Component {
           ]}
         />
         <EndOf type="PORTFOLIO" />
-      </>
+      </div>
     );
   }
 }

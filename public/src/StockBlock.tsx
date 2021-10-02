@@ -31,11 +31,14 @@ export default class StockBlock extends React.Component<Props, State> {
         {this.getFormattedDate()}
         <div className='stock-block-stock-container'>
           <ul>
-            {this.state.stocksInvestedIn.map((stock) => (
+            {this.state.stocksInvestedIn.map((stock) => {
+              console.log(stock);
+              
+              return (
               <li>
                 <InvestedStock stock={stock} />
               </li>
-            ))}
+            )})}
           </ul>
         </div>
       </div>
