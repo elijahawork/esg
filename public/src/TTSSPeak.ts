@@ -1,8 +1,6 @@
-import say from 'say';
-
-export default class TTSSPeak {
+const synth = window.speechSynthesis;
+export default class TSpeak {
   static speak(words: string) {
-    say.speak(words);
-    say.stop()
+    synth.speak(new SpeechSynthesisUtterance(words));
   }
 }
