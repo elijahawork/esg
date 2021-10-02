@@ -11,8 +11,8 @@ export default class OverallESGScore extends React.Component<ScoreContainer, Sco
   }
   render() {
     return <>
-      <div>
-        {this.state.score}
+      <div id='overall-esg-score'>
+        Overall ESG Score <span className='esg-score'>{this.state.score}</span>
       </div>
     </>
   }

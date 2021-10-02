@@ -7,20 +7,14 @@ import RightColumn from './RightColumn';
 export class App extends React.Component {
   render() {
     return (
-      <>
+      <div id ='root'>
         <HeadNavbar />
-        <ul>
-          <li>
+        <div id='body'>
             <LeftColumn/>
-          </li>
-          <li>
             <MiddleColumn/>
-          </li>
-          <li>
             <RightColumn/>
-          </li>
-        </ul>
-      </>
+        </div>
+      </div>
     );
   }
 }

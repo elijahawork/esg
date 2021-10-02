@@ -8,6 +8,6 @@ export default class EndOf extends React.Component<EndOfType> {
   }
 
   render() {
-    return <>END OF {this.props.type.toUpperCase()}</>;
+    return <div className='eof'>END OF {this.props.type.toUpperCase()}</div>;
   }
 }

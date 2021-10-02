@@ -5,7 +5,7 @@ export default class MiddleColumn extends React.Component {
   render() {
     return <>
       {/* <StockOfferHeader /> */}
-      <StockBlock stocksInvestedIn={ [] }/>
+      <StockBlock dateInvested={ new Date() }stocksInvestedIn={[] }/>
 
       </>
   }

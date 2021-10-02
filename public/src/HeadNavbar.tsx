@@ -2,13 +2,21 @@ import React from 'react';
 export default class Headnavbar extends React.Component {
   render() {
     return (
-      <ul>
-        {['SECS', 'EXCHANGE', 'WALLET', 'ACCOUNT'].map((e, i) => (
-          <li key={i}>
-            <button>{e}</button>
+      <header id ='header'>
+        <ul className="headnavbar">
+          <li id="logo">SECS</li>
+          <li id="exchange">
+            <button className="selected">EXCHANGE</button>
           </li>
-        ))}
-      </ul>
+          <li id="wallet">
+            <button>WALLET</button>
+          </li>
+          <li id="account">
+            <button>ACCOUNT</button>
+          </li>
+        </ul>
+        <button id="logout">LOG OUT</button>
+      </header>
     );
   }
 }
