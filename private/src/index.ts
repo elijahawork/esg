@@ -6,18 +6,19 @@ const PORT = 4000;
 // const ticker: string = 'AAPL';
 
 import path from 'path';
+import { getESG } from './ESGQuery';
 
-console.log(path.normalize(join(__dirname, '..', '..', 'public', 'dist')));
-app.use(express.static(join(__dirname, '..', '..', 'public', 'dist')));
+// console.log(path.normalize(join(__dirname, '..', '..', 'public', 'dist')));
+// app.use(express.static(join(__dirname, '..', '..', 'public', 'dist')));
 
-app.get('/', (req, res) => {
+// app.get('/', (req, res) => {
   
-  res.sendFile(join(__dirname, '..', '..', 'public', 'dist', 'index.html'));
-});
+//   res.sendFile(join(__dirname, '..', '..', 'public', 'dist', 'index.html'));
+// });
 
-app.listen(PORT, () => {
-  console.log(`Example app listening at http://localhost:${PORT}`)
-});
+// app.listen(PORT, () => {
+//   console.log(`Example app listening at http://localhost:${PORT}`)
+// });
 
 // import https from 'https';
 // const options = {
@@ -45,4 +46,5 @@ app.listen(PORT, () => {
 
 // web
 
-TDTickerData.get('aapl')
+// TDTickerData.get('aapl')
+console.log(getESG('cock'));
