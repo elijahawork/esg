@@ -1,6 +1,6 @@
 import fs, { PathLike } from 'fs';
 import { join } from 'path';
-import User from './User';
+import User from './user/User';
 
 export namespace Database {
   export class Database {
