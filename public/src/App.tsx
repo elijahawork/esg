@@ -1,18 +1,25 @@
 import React from 'react';
+import HeadNavbar from './HeadNavbar';
+import LeftColumn from './LeftColumn';
+import MiddleColumn from './MiddleColumn';
+import RightColumn from './RightColumn';
 
 export class App extends React.Component {
   render() {
     return (
       <>
-        <header>
-          <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Login</li>
-            <li>Portfolio</li>
-          </ul>
-        </header>
-        <nav></nav>
+        <HeadNavbar />
+        <ul>
+          <li>
+            <LeftColumn/>
+          </li>
+          <li>
+            <MiddleColumn/>
+          </li>
+          <li>
+            <RightColumn/>
+          </li>
+        </ul>
       </>
     );
   }
