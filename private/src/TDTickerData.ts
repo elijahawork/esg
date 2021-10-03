@@ -1,11 +1,60 @@
-const ticker: string = 'AAPL';
-
+import fs from 'fs';
 import https from 'https';
+import { join } from 'path';
+const absPathOfAuth = join(__dirname, '..', 'authCode.txt');
+
 export default class TDTickerData {
-  private static readonly AUTH =
-    'JApycCmgkKIqtGmhUNoNnzclaAILZzzhJLlOHq1FvNO9rRCbDtc/n6XlpuE1HonmrsUfOuiIo1vOmUO0FWCccCNSncVYEzjaor3Dzz8a9Yhh/M0LdCS/A2KjUTsZvzSeWboe+eSxy8CEHpJsUnAVJGM2qi5/8FFqy6VXR1LuQulMehMq2+UXZykIn4HzoOsGVNteOROjJgICLnkUuYqEFXG6llQHfcgbVgGRByvsHQoChWUnizIoEWsSApIS7El8cqou/ncVrhGNYd0zZO4mchcZ2EHb/ff7vCSGTfvGt5t4yRC/O6mXSD602+1+9vBksJzn/lQ49nyObggVxY+oiphkgLaLNCFVMdhnWCQ2v0nx/Ksw+m9Ffkb2Dj3aktAz5HX1CAicfnwMUWXpKaDev+2PzgyHjaBMK8ii9c4euKujOpQXb6VJimAQJ+OqNDXjzDvWaUr0hKJQpavmq4D9jIcKH94KahiTO5UI1Xn+L4GwXZ0wXAN9h5QenEIA9B0H4gOuYU54vByOjBRqD0Bsp6n8Z4QltPJRXHZ2XA3wcAJ8STRTVwlwZBuBbrpQrfq28K9bDcQzW54FOqO1M93Vk/MKuguBtwVNXvnocM3MrFtCL0OtF100MQuG4LYrgoVi/JHHvlB1mJgXATazsyQ4feVfV+KlMmX5ShErJtxeJjotOLzV1W2wt3tBTwsfLO2M7hXAHvZ/JaISCixM+KKdxhgq+NICIgCKEx1cGeFja2tEvxSDZ3Y/DIR3q6JZdA63urspSYryQCgJ2xpqEwqBKCYkYVv2GYlDGceEB9wH23bK3sZ6sBNtNOJrq8Kt3q5AlUvkghKbYrYz1ORaqWwVlLrrMriInqQ5IfAMt17w3Hk6AGEHeUbsnWr5NEU0D8Y281C1h0jesxAuqa1/oHNfhxKuVLST3ozQHLzejDqapj1fcawDhytvY1KvHnNeIkJT1V8Mdq/L7Ib5LMEgdyMv5MWcBWcdUdEXBjRqFo5kb3MFupgtVtLwklYWcZgiZp/FlaMJqHKNAcoBss16eAJ3W/Wco6Pfr9K98gpistA7jEWrdkegCWHZnc1kqH8JcIvA7jKgbNFjbTIv+LqC9kLIBaM4R/3Q1C5J8wns7Mi5sTmVtdl3zATj7TlJNvslxT1ym1M2rwhDML/033zDh5b1gVsOji2Mpze7lnSEKgzYbi45LRU8TqA25DgxzPRNO7YKCb9fnGkzBxAmUfHVIyNXo7MAyD4xpYS8zf87jV5n5rqBN1u+sbTWOg==212FD3x19z9sWBHDJACbC00B75E';
-    
-  public static get(ticker: string) {
+  public static AUTH = '';
+  public static updateAuth() {
+    TDTickerData.AUTH = fs.readFileSync(absPathOfAuth, 'utf-8');
+  }
+  public static setToken() {
+    const https = require('https');
+    const data = JSON.stringify({
+      grant_type: 'refresh_token',
+      ///ignore
+      refresh_token:
+        '6HardAudIivTwgG+JsBejjIAxFx1sslsGvs5eGuWLLWBV9yn+3nkO6Lh8FOz8c2hFNT3iA+uakL8Djp/B9o+99qSVdhImmYp0vQ5FaFVm//7WHrBSzPVFlP7jjV1ceiKEZre1A50M/AJJgXJLnU8+C8aVIjADeH6wzfC/xvoIRluhmSDoCgN2hS3jvXNVcTVVbAsUtZ+yQFjoaUOMIu/P6PuKU8UGL6JaVny08Nxs3My17C/QTR3HoXPobxGqjT913SH8XHM4NQXmR0jyxUxWa8WfIXd/OMdgqDVqLavdNI2W5zbLUg7nzKtr/VDPziVXjW+c5JJnGsQltk/B6NKWvyOZ/lQSrH25yVB1eKbc/wtN+KJ4jjMlVOFmLK7w0bhJcd1rniNHuEJGBAKifmCIqf7vKBWXMk1f+LaS0BWl7BKmOsayOxdp9idibr100MQuG4LYrgoVi/JHHvlovFKO9MSJ3DgUwLFg0ZBzdliM7V2P/fey2MALeL5cjy8giVnc7sEY5n8aEFqdccGgX/QS7SS4CUskQ0kXDsKqdG6Nr6jE/dJSHpDNeMc1UcM+ZqcgpIt8902bNeLzV658MR0dJurg3gCcNV+sixe5uDEdr5dPx6GWbF+Baj6LlKGnBABO8GnfVM2XTqpq5Vy8AZrqI/UeDhz1LxXEDvF+xZ+DeGKqHq/MnuDC+yGZ7Anesv3vtiemfKbH3aWThICQaoEDAU1cUsYfyHuva5L5tCuBvXhezGooMiYXer4fV3YbYWBxl965V7IWefg4Hn1aMMvN5Qoi7YSNXAg1U1JNWQHKkmhlM7AQcKqoi5Vso5DSqsSpOhM20WXYfwBe7VnIDONH39we6RX6pUzGHBLnauiuSxj8MkEA/xhaqntrvmqM/OiqdVjxGPmqms=212FD3x19z9sWBHDJACbC00B75E',
+      client_id: 'ZBXVDPZCFVDFDQG0ZKLARUMC1WW7S2Y8',
+    });
+
+    const options = {
+      hostname: 'api.tdameritrade.com',
+      port: 443,
+      path: '/v1/oauth2/token',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Content-Length': data.length,
+      },
+    };
+
+    const req = https.request(options, (res: any) => {
+      console.log(`statusCode: ${res.statusCode}`);
+
+      res.on('data', (d: any) => {
+        process.stdout.write('HERE' + d);
+      });
+    });
+
+    req.on('error', (error: any) => {
+      console.error(error);
+    });
+
+    req.write(data);
+    req.end();
+  }
+
+  private static parseData(jsonStr: string) {
+    const parsedObject: object = JSON.parse(jsonStr);
+
+    if (Object.entries(parsedObject).length > 0)
+      return parsedObject as STOCK_DATA_RETURN;
+
+    throw new Error(`Cannot parse data.`);
+  }
+
+  public static get(ticker: string): Promise<STOCK_DATA_RETURN> {
     const options = {
       hostname: 'api.tdameritrade.com',
       port: 443,
@@ -16,16 +65,35 @@ export default class TDTickerData {
       },
     };
 
-    const req = https.request(options, (res) => {
-      res.on('data', (d: Buffer) => {
-        console.log(d.toString());
+    const returningPromise = new Promise<STOCK_DATA_RETURN>((resolve, rej) => {
+      const req = https.request(options, (res) => {
+        res.on('data', (d: Buffer) => {
+          console.log('d',d.toString());
+          
+          try {
+            const dataAsJSONString = d.toString();
+            const parsedData = TDTickerData.parseData(dataAsJSONString);
+            
+            resolve(parsedData);
+          } catch (e) {
+            rej(e);
+          }
+          req.end();
+        });
+
       });
     });
 
-    req.on('error', (error) => {
-      console.error(error);
-    });
-
-    req.end();
+    return returningPromise;
   }
 }
+
+// keep AUTH code updated
+TDTickerData.updateAuth();
+fs.watchFile(
+  absPathOfAuth,
+  {
+    interval: 60000,
+  },
+  TDTickerData.updateAuth
+);
