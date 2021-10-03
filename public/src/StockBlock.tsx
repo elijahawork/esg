@@ -3,7 +3,7 @@ import InvestedStock from './InvestedStock';
 
 type Props = {
   stocksInvestedIn: StockInvestedIn[];
-  dateInvested: Date;
+  dateInvested?: Date;
 };
 type State = {
   stocksInvestedIn: StockInvestedIn[];
@@ -28,7 +28,7 @@ export default class StockBlock extends React.Component<Props, State> {
   render() {
     return (
       <div className="stock-block">
-        {this.getFormattedDate()}
+        {this.props.dateInvested ? this.getFormattedDate() : null}
         <div className='stock-block-stock-container'>
           <ul>
             {this.state.stocksInvestedIn.map((stock) => {

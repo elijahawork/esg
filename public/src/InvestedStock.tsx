@@ -9,7 +9,7 @@ export default class InvestedStock extends React.Component<Props> {
     super(props);
   }
   render() {
-    return <div>
+    return <div className='invested-stock'>
       <div>
         <div>
           <span className='stock-name'>{this.props.stock.name}</span>&nbsp;&nbsp;
